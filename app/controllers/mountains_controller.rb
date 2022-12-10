@@ -9,7 +9,7 @@ class MountainsController < ApplicationController
     return redirect_to root_path, alert: 'Please select CSV file instead.' unless file.content_type == 'text/csv'
     
     # Import data
-    csvImportService = CsvImportService.new(file)
+    csvImportService = CSVImportService.new(file)
     csvImportService.import
 
     # Redirect with notice

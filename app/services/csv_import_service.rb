@@ -1,4 +1,4 @@
-class CsvImportService
+class CSVImportService
   require 'csv'
   
   def initialize(file)
