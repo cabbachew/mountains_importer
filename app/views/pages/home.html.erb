@@ -2,7 +2,12 @@
 <p>Let's import some mountains.</p>
 
 <%= render "mountains/import_form" %>
-
+<%# column_chart Mountain.group("SUBSTR(name, 1, 1)").count, xtitle: "Elevation (m)" %>
+<%= column_chart @chart_data, 
+  xtitle: "Difficulty Based on Elevation", 
+  ytitle: "Number of Mountains",
+  order: ["low", "medium", "high"]
+%>
 <% @mountains.each do |mountain| %>
   <div class="card">
     <div class="card-body">
