@@ -1,6 +1,21 @@
 class MountainsController < ApplicationController
   before_action :set_mountain, only: %i[ show edit update destroy ]
 
+  def import
+    file = params[:file]
+
+    # Redirect if bad data
+    return redirect_to root_path, alert: 'No file selected' unless file
+    return redirect_to root_path, alert: 'Please select CSV file instead' unless file.content_type == 'text/csv'
+    
+    # Import data
+    csvImportService = CsvImportService.new(file)
+    csvImportService.import
+
+    # Redirect with notice
+    redirect_to root_path, notice: "#{csvImportService.number_imported_with_last_run} mountains were imported."
+  end
+
   # GET /mountains or /mountains.json
   def index
     @mountains = Mountain.all
