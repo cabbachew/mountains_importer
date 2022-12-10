@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @mountain %>
+
+<div>
+  <%= link_to "Edit this mountain", edit_mountain_path(@mountain) %> |
+  <%= link_to "Back to mountains", mountains_path %>
+
+  <%= button_to "Destroy this mountain", @mountain, method: :delete %>
+</div>

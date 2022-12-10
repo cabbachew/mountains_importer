@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Mountains</h1>
+
+<div id="mountains">
+  <% @mountains.each do |mountain| %>
+    <%= render mountain %>
+    <p>
+      <%= link_to "Show this mountain", mountain %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New mountain", new_mountain_path %>
