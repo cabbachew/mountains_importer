@@ -2,3 +2,12 @@
 <p>Let's import some mountains.</p>
 
 <%= render "mountains/import_form" %>
+
+<% @mountains.each do |mountain| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= mountain.name %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= mountain.height %></h6>
+    </div>
+  </div>
+<% end %>
