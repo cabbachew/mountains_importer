@@ -5,8 +5,8 @@ class MountainsController < ApplicationController
     file = params[:file]
 
     # Redirect if bad data
-    return redirect_to root_path, alert: 'No file selected' unless file
-    return redirect_to root_path, alert: 'Please select CSV file instead' unless file.content_type == 'text/csv'
+    return redirect_to root_path, alert: 'No file selected.' unless file
+    return redirect_to root_path, alert: 'Please select CSV file instead.' unless file.content_type == 'text/csv'
     
     # Import data
     csvImportService = CsvImportService.new(file)
@@ -14,6 +14,11 @@ class MountainsController < ApplicationController
 
     # Redirect with notice
     redirect_to root_path, notice: "#{csvImportService.number_imported_with_last_run} mountains were imported."
+  end
+
+  def clear
+    Mountain.destroy_all
+    redirect_to root_path, notice: "All mountains cleared."
   end
 
   # GET /mountains or /mountains.json

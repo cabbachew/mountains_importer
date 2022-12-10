@@ -4,6 +4,9 @@ Rails.application.routes.draw do
       post :import
     end
   end
+
+  delete :clear_mountains, to: "mountains#clear"
+
   root 'pages#home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
